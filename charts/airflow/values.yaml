@@ -1,0 +1,48 @@
+airflow:
+  dags:
+      gitSync:
+        enabled: true
+        repo: https://github.com/Courtcircuits/airflow.git  # A small DAGS pipeline as an example.
+        branch: main
+        rev: HEAD
+        subPath: "dags"
+      persistence:
+        enabled: false
+  executor: "KubernetesExecutor"
+  fernetkeysecretname: fernetkeysecret
+  webserverSecretKeySecretName: webserversecret
+  createUserJob:
+    useHelmHooks: false
+    applyCustomEnv: false
+  migrateDatabaseJob:
+    useHelmHooks: false
+    applyCustomEnv: false
+    jobAnnotations:
+      "argocd.argoproj.io/hook": Sync
+  postgresql:  # Default postgres deployed by the chart.
+    enabled: false
+  data:
+    metadataConnection:
+      user: postgres
+      pass: postgres
+      protocol: postgresql
+      host: airflow-postgres-ha-postgresql.argocd.svc.cluster.local
+      port: 5432
+      db: "airflow"
+global:
+  postgresql:
+    database: "airflow"
+    username: "postgres"
+    password: "postgres"
+    repmgrUsername: "repmgr"
+    repmgrPassword: "repmgr_password"
+    postgresqlPassword: "postgres"
+    postgresqlDatabase: "airflow"
+  pgpool:
+    adminPassword: "postgres"
+    adminUsername: "admin"
+postgres-ha: # HA Postgres
+  postgresql:
+    postgresPassword: "postgres"
+  pgpool:
+    adminPassword: "postgres"
