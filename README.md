@@ -197,9 +197,7 @@ spec:
     automated:
       selfHeal: true
 ```
-The above application watches our root-app helm chart (under `charts/root-app/`) and if changes are detected, they get synchronized (meaning rendering the chart and applying the resulting manifests on the cluster).
-
-ArgoCD looks for a helm chart "Chart.yaml" under "path" in the git reposiroty. The same applies for Kustomize, it looks for a "kustomization.yaml" file.
+The above application watches our apps helm chart (under `charts/root-app/`) and if changes are detected, they get synchronized (meaning rendering the chart and applying the resulting manifests on the cluster).
 
 ArgoCD will not use `helm install` to install charts. I will render the chart with `helm template` and then apply the output with `kubectl`. This means we can't run `helm list` on a local machine to get all installed releases.
 
