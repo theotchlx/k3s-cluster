@@ -1,0 +1,22 @@
+argo-cd:
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
+  applicationSet:
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure
+  controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  repoServer:
+    resources:
+      requests:controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
