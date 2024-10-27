@@ -316,7 +316,7 @@ spec:
     path: charts/airflow/
     targetRevision: HEAD
     helm:
-      valuesFiles:
+      valueFiles:
       - values.yaml
   destination:
     server: https://kubernetes.default.svc
