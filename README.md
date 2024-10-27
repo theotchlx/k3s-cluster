@@ -146,7 +146,7 @@ Our helm chart doesn't install an Ingress by default. To access the Web UI, we h
 ```bash
 kubectl -n argocd port-forward --address 0.0.0.0 svc/argo-cd-argocd-server 8080:443 &
 ```
-*That command didn't work for me.. Even after reloading the k3s service. I had to execute the command from the VM as root... It may be an issue with the kubeconfig privileges?*
+*That command didn't work for me.. Even after restarting the k3s service. I had to execute the command from the VM as root... It may be an issue with the kubeconfig privileges?*
 
 You can now connect to `http://<vm-ip>:8080` to access the Web UI. The default username is admin. The password is auto-generated, we can get it with:
 ```bash
