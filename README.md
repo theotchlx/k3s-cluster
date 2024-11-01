@@ -54,6 +54,13 @@ apt-get update
 apt-get install helm
 ```
 
+Or you can build Helm from source (you need a working Go environment):
+```
+git clone https://github.com/helm/helm.git
+cd helm
+make
+```
+
 ### ArgoCD installation using Helm
 From this point on, you should have knowledge on how to use K3s and Helm to install and configure K3s, Helm, ArgoCD and the rest of the apps properly.
 *This setup may not currently reflect such knowledge.*
